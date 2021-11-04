@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="row justify-content-center align-self-center">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Login</h5>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label for="usuarioLogin">Usuário</label>
+                        <input type="text" class="form-control" id="usuarioLogin" placeholder="Digite seu usuário">
+                    </div>
+                    <div class="form-group">
+                        <label for="senhaLogin">Senha</label>
+                        <input type="password" class="form-control" id="senhaLogin" placeholder="Digite sua senha">
+                    </div>
+                    <button type="submit" onclick="fazerLogin()" class="btn btn-primary">Logar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Cadastro</h5>
+                <form id="form-cadastro">
+                    <div class="form-group">
+                        <label for="usuarioCadastro">Usuário</label>
+                        <input type="text" class="form-control" id="usuarioCadastro" placeholder="Digite seu usuário">
+                    </div>
+                    <div class="form-group">
+                        <label for="senhaCadastro">Senha</label>
+                        <input type="password" class="form-control" id="senhaCadastro" placeholder="Digite sua senha">
+                    </div>
+                    <button type="button" onclick="adicionarUsuario()" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
