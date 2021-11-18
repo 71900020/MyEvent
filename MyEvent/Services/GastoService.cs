@@ -24,30 +24,19 @@ namespace MyEvent.Services
             return _gastoRepository.BuscarGastosPorEvento(idEvento);
         }
 
-        public bool CadastrarGasto(Gasto gasto)
+        public Gasto BuscarGastosPorId(int id)
         {
-            try
-            {
-                _gastoBaseService.Add(gasto);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return _gastoBaseService.GetById(id);
+        }
+
+        public void CadastrarGasto(Gasto gasto)
+        {
+            _gastoBaseService.Add(gasto);
         }
 
         public Gasto EditarGasto(Gasto gasto)
         {
-            try
-            {
-                return _gastoBaseService.Update(gasto);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            return _gastoBaseService.Update(gasto);
         }
 
         public decimal GastosTotaisPorEvento(int idEvento)
@@ -55,19 +44,9 @@ namespace MyEvent.Services
             return _gastoRepository.GastosTotaisPorEvento(idEvento);
         }
 
-        public bool RemoverGasto(Gasto gasto)
+        public void RemoverGasto(int id)
         {
-            try
-            {
-                _gastoBaseService.Delete(gasto.PKGasto);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            _gastoBaseService.Delete(id);
         }
     }
 }

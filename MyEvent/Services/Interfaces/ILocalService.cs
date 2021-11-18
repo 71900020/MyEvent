@@ -8,9 +8,10 @@ namespace MyEvent.Services.Interfaces
 {
     public interface ILocalService
     {
-        bool CadastrarLocal(Local local);
-        bool RemoverLocal(Local local);
+        void CadastrarLocal(Local local);
+        void RemoverLocal(int pkLocal);
         Local EditarLocal(Local local);
         Local BuscarLocalPeloEvento(int idEvento);
+        Local BuscarLocalPeloId(int idlocal);
     }
 }

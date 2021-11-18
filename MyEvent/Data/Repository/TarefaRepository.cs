@@ -16,9 +16,9 @@ namespace MyEvent.Data.Repository
             _sqlContext = sqlContext;
         }
 
-        public int BuscarTarefasNaoRealizadasPorEvento(int idEvento)
+        public IEnumerable<Tarefa> BuscarTarefasNaoRealizadasPorEvento(int idEvento)
         {
-            return _sqlContext.TBTarefa.Where(c => c.FKEvento == idEvento && !c.FoiRealizado).Count();
+            return _sqlContext.TBTarefa.Where(c => c.FKEvento == idEvento && !c.FoiRealizado);
         }
 
         public IEnumerable<Tarefa> BuscarTarefasPorEvento(int idEvento)
@@ -26,9 +26,9 @@ namespace MyEvent.Data.Repository
             return _sqlContext.TBTarefa.Where(c => c.FKEvento == idEvento);
         }
 
-        public int BuscarTarefasRealizadasPorEvento(int idEvento)
+        public IEnumerable<Tarefa> BuscarTarefasRealizadasPorEvento(int idEvento)
         {
-            return _sqlContext.TBTarefa.Where(c => c.FKEvento == idEvento && c.FoiRealizado).Count();
+            return _sqlContext.TBTarefa.Where(c => c.FKEvento == idEvento && c.FoiRealizado);
         }
     }
 }

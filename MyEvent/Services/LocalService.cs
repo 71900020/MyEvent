@@ -21,55 +21,27 @@ namespace MyEvent.Services
 
         public Local BuscarLocalPeloEvento(int idEvento)
         {
-            try
-            {
-                return _localRepository.BuscarLocalPeloEvento(idEvento);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return _localRepository.BuscarLocalPeloEvento(idEvento);
         }
 
-        public bool CadastrarLocal(Local local)
+        public Local BuscarLocalPeloId(int idLocal)
         {
-            try
-            {
-                _localBaseService.Add(local);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return _localBaseService.GetById(idLocal);
+        }
+
+        public void CadastrarLocal(Local local)
+        {
+            _localBaseService.Add(local);
         }
 
         public Local EditarLocal(Local local)
         {
-            try
-            {
-                return _localBaseService.Update(local);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            return _localBaseService.Update(local);
         }
 
-        public bool RemoverLocal(Local local)
+        public void RemoverLocal(int idLocal)
         {
-            try
-            {
-                _localBaseService.Delete(local.PKLocal);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            _localBaseService.Delete(idLocal);
         }
     }
 }

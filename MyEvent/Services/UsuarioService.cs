@@ -19,35 +19,16 @@ namespace MyEvent.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        public bool CadastrarUsuario(Usuario usuario)
+        public void CadastrarUsuario(Usuario usuario)
         {
-            try
-            {
-                var existeUsuario = _usuarioRepository.ExisteUsuario(usuario.Login);
-                if (!existeUsuario)
-                {
-                    _usuarioBaseService.Add(usuario);
-                    return true;
-                }
-
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var existeUsuario = _usuarioRepository.ExisteUsuario(usuario.Login);
+            if (!existeUsuario)
+                _usuarioBaseService.Add(usuario);
         }
 
         public bool LoginValido(Usuario usuario)
         {
-            try
-            {
-                return _usuarioRepository.LoginValido(usuario.Login, usuario.Senha);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return _usuarioRepository.LoginValido(usuario.Login, usuario.Senha);
         }
     }
 }

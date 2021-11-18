@@ -8,11 +8,12 @@ namespace MyEvent.Services.Interfaces
 {
     public interface ITarefaService
     {
-        bool CadastrarTarefa(Tarefa tarefa);
-        bool RemoverTarefa(Tarefa tarefa);
+        void CadastrarTarefa(Tarefa tarefa);
+        void RemoverTarefa(int idTarefa);
         Tarefa EditarTarefa(Tarefa tarefa);
         IEnumerable<Tarefa> BuscarTarefasPorEvento(int idEvento);
-        int BuscarTarefasRealizadasPorEvento(int idEvento);
-        int BuscarTarefasNaoRealizadasPorEvento(int idEvento);
+        Tarefa BuscarTarefasPorId(int idTarefa);
+        IEnumerable<Tarefa> BuscarTarefasRealizadasPorEvento(int idEvento);
+        IEnumerable<Tarefa> BuscarTarefasNaoRealizadasPorEvento(int idEvento);
     }
 }
