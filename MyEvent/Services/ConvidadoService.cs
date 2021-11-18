@@ -25,61 +25,33 @@ namespace MyEvent.Services
             _localRepository = localRepository;
         }
 
+        public Convidado BuscarConvidadoPeloId(int idConvidado)
+        {
+            return _convidadoBaseService.GetById(idConvidado);
+        }
+
         public IEnumerable<Convidado> BuscarConvidadosPorEvento(int idEvento)
         {
             return _convidadoRepository.BuscarConvidadosPorEvento(idEvento);
         }
 
-        public bool CadastrarConvidado(Convidado convidado)
+        public void CadastrarConvidado(Convidado convidado)
         {
-            try
-            {
-                var convidadoTemIdadePermitida = ConvidadoPodeEntrarNoEvento(convidado);
+            var convidadoPodeEntrarNoEvento = ConvidadoPodeEntrarNoEvento(convidado);
 
-                if (convidadoTemIdadePermitida)
-                {
-                    _convidadoBaseService.Add(convidado);
-                    return true;
-                }
+            if (convidadoPodeEntrarNoEvento)
+                _convidadoBaseService.Add(convidado);
 
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
 
         public Convidado EditarConvidado(Convidado convidado)
         {
-            try
-            {
-                return _convidadoBaseService.Update(convidado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return _convidadoBaseService.Update(convidado);
         }
 
-        public int QtdConvidadosPorEvento(int idEvento)
+        public void RemoverConvidado(int idConvidado)
         {
-            return _convidadoRepository.QtdConvidadosPorEvento(idEvento);
-        }
-
-        public bool RemoverConvidado(Convidado convidado)
-        {
-            try
-            {
-                _convidadoBaseService.Delete(convidado.PKConvidado);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            _convidadoBaseService.Delete(idConvidado);
         }
 
         private bool ConvidadoPodeEntrarNoEvento(Convidado convidado)
@@ -92,8 +64,14 @@ namespace MyEvent.Services
             {
                 return true;
             }
-
-            return false;
+            else if (!idadePermitida)
+            {
+                throw new Exception("Convidado não tem idade permitida para entrar no evento");
+            }
+            else
+            {
+                throw new Exception("Local do evento está com lotação máxima");
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace MyEvent.Services
             _tarefaRepository = tarefaRepository;
         }
 
-        public int BuscarTarefasNaoRealizadasPorEvento(int idEvento)
+        public IEnumerable<Tarefa> BuscarTarefasNaoRealizadasPorEvento(int idEvento)
         {
             return _tarefaRepository.BuscarTarefasNaoRealizadasPorEvento(idEvento);
         }
@@ -29,50 +29,29 @@ namespace MyEvent.Services
             return _tarefaRepository.BuscarTarefasPorEvento(idEvento);
         }
 
-        public int BuscarTarefasRealizadasPorEvento(int idEvento)
+        public Tarefa BuscarTarefasPorId(int idTarefa)
+        {
+            return _tarefaBaseService.GetById(idTarefa);
+        }
+
+        public IEnumerable<Tarefa> BuscarTarefasRealizadasPorEvento(int idEvento)
         {
             return _tarefaRepository.BuscarTarefasRealizadasPorEvento(idEvento);
         }
 
-        public bool CadastrarTarefa(Tarefa tarefa)
+        public void CadastrarTarefa(Tarefa tarefa)
         {
-            try
-            {
-                _tarefaBaseService.Add(tarefa);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _tarefaBaseService.Add(tarefa);
         }
 
         public Tarefa EditarTarefa(Tarefa tarefa)
         {
-            try
-            {
-                return _tarefaBaseService.Update(tarefa);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            return _tarefaBaseService.Update(tarefa);
         }
 
-        public bool RemoverTarefa(Tarefa tarefa)
+        public void RemoverTarefa(int idTarefa)
         {
-            try
-            {
-                _tarefaBaseService.Delete(tarefa.PKTarefa);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            _tarefaBaseService.Delete(idTarefa);
         }
     }
 }

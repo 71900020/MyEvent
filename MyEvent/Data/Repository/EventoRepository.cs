@@ -23,7 +23,7 @@ namespace MyEvent.Data.Repository
 
         public bool ConvidadoTemIdadePermitida(int idEvento, int idadeConvidado)
         {
-           return _sqlContext.TBEvento.Where(c => c.PKEvento == idEvento).Select(c => c.IdadeMinima).FirstOrDefault() >= idadeConvidado;
+           return _sqlContext.TBEvento.Where(c => c.PKEvento == idEvento).Select(c => c.IdadeMinima).FirstOrDefault() <= idadeConvidado;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MyEvent.Services.Interfaces
 {
     public interface IUsuarioService
     {
-        bool CadastrarUsuario(Usuario usuario);
+        void CadastrarUsuario(Usuario usuario);
         bool LoginValido(Usuario usuario);
     }
 }

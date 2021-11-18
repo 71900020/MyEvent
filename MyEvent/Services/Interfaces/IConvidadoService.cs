@@ -8,10 +8,11 @@ namespace MyEvent.Services.Interfaces
 {
     public interface IConvidadoService
     {
-        bool CadastrarConvidado(Convidado convidado);
-        bool RemoverConvidado(Convidado convidado);
+        void CadastrarConvidado(Convidado convidado);
+        void RemoverConvidado(int idConvidado);
         Convidado EditarConvidado(Convidado convidado);
-        int QtdConvidadosPorEvento(int idEvento);
         IEnumerable<Convidado> BuscarConvidadosPorEvento(int idEvento);
+        Convidado BuscarConvidadoPeloId(int idConvidado);
+
     }
 }

@@ -8,9 +8,10 @@ namespace MyEvent.Services.Interfaces
 {
     public interface IEventoService
     {
-        bool CadastrarEvento(Evento evento);
-        bool RemoverEvento(Evento evento);
+        void CadastrarEvento(Evento evento);
+        void RemoverEvento(int pkEvento);
         Evento EditarEvento(Evento evento);
         IEnumerable<Evento> BuscarEventosPorUsuario(int idUsuario);
+        Evento BuscarEventosPorId(int idEvento);
     }
 }

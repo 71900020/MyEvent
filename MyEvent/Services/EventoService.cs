@@ -19,49 +19,29 @@ namespace MyEvent.Services
             _eventoRepository = eventoRepository;
         }
 
+        public Evento BuscarEventosPorId(int idEvento)
+        {
+            return _eventoBaseService.GetById(idEvento);
+        }
+
         public IEnumerable<Evento> BuscarEventosPorUsuario(int idUsuario)
         {
             return _eventoRepository.BuscarEventosPorUsuario(idUsuario);
         }
 
-        public bool CadastrarEvento(Evento evento)
+        public void CadastrarEvento(Evento evento)
         {
-            try
-            {
-                _eventoBaseService.Add(evento);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _eventoBaseService.Add(evento);
         }
 
         public Evento EditarEvento(Evento evento)
         {
-            try
-            {
-                return _eventoBaseService.Update(evento);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return _eventoBaseService.Update(evento);
         }
 
-        public bool RemoverEvento(Evento evento)
+        public void RemoverEvento(int id)
         {
-            try
-            {
-                _eventoBaseService.Delete(evento.PKEvento);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            _eventoBaseService.Delete(id);
         }
     }
 }

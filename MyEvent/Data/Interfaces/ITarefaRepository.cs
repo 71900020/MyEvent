@@ -9,7 +9,7 @@ namespace MyEvent.Data.Interfaces
     public interface ITarefaRepository
     {
         IEnumerable<Tarefa> BuscarTarefasPorEvento(int idEvento);
-        int BuscarTarefasRealizadasPorEvento(int idEvento);
-        int BuscarTarefasNaoRealizadasPorEvento(int idEvento);
+        IEnumerable<Tarefa> BuscarTarefasRealizadasPorEvento(int idEvento);
+        IEnumerable<Tarefa> BuscarTarefasNaoRealizadasPorEvento(int idEvento);
     }
 }
